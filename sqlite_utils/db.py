@@ -1012,7 +1012,7 @@ class Database:
         :param table_name: Name of the table
         """
         if table_name in self.view_names():
-            raise NoTable(f"Table {table_name} is actually a view")
+            return None
         kwargs.setdefault("strict", self.strict)
         return Table(self, table_name, **kwargs)
 

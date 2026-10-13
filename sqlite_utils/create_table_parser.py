@@ -842,8 +842,6 @@ def check_references_identifier(expression: str, identifier: str) -> bool:
 def sql_ends_in_line_comment(sql: str) -> bool:
     """Return True if appended SQL would be swallowed by a ``--`` comment."""
     tokens = _lex(sql)
-    if not tokens:
-        return False
     final = tokens[-1]
     return (
         final.kind == "comment"
