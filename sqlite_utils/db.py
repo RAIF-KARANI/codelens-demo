@@ -1272,14 +1272,14 @@ class Database:
 
     def reset_counts(self) -> None:
         "Re-calculate cached counts for tables."
-        tables = [table for table in self.tables if table.has_counts_triggers]
+        tables_value = [table for table in self.tables if table.has_counts_triggers]
         with self.atomic():
             self._ensure_counts_table()
             counts_table = self.table(self._counts_table_name)
             counts_table.delete_where()
             counts_table.insert_all(
                 {"table": table.name, "count": table.execute_count()}
-                for table in tables
+                for table in tables_value
             )
 
     def execute_returning_dicts(
