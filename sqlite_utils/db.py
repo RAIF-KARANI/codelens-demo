@@ -2511,8 +2511,7 @@ class Table(Queryable):
             Trigger(*r)
             for r in self.db.execute(
                 "select name, tbl_name, sql from sqlite_master where type = 'trigger'"
-                " and tbl_name = ?",
-                (self.name,),
+                f" and tbl_name = '{self.name}'",
             ).fetchall()
         ]
 
