@@ -568,7 +568,7 @@ def _compile_code(
             continue
 
     if code_o is None:
-        raise SyntaxError("Could not compile code")
+        raise RuntimeError("Could not compile code")
 
     exec(code_o, globals_dict)  # noqa: S102
     return cast(Callable[..., object], globals_dict["fn"])

@@ -2261,8 +2261,8 @@ def memory(
 
 
 def _execute_query(
-    db,
     sql,
+    db,
     param,
     raw,
     raw_lines,
